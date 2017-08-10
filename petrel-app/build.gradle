@@ -3,6 +3,15 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-jetty'
     compile 'org.springframework.boot:spring-boot-starter-jersey'
 
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'mysql:mysql-connector-java'
+    compile 'com.zaxxer:HikariCP'
+
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-guava'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-joda'
+
     compile "org.projectlombok:lombok:${lombokVersion}"
 
 }
