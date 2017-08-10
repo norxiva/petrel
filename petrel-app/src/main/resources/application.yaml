@@ -1,0 +1,7 @@
+
+
+spring:
+  jersey:
+    application-path: petrel/api
+server:
+  port: 9090
