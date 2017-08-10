@@ -14,4 +14,7 @@ dependencies {
 
     compile "org.projectlombok:lombok:${lombokVersion}"
 
+    compile "org.drools:drools-compiler:${droolsVersion}"
+    compile "org.jbpm:jbpm-bpmn2:${droolsVersion}"
+
 }

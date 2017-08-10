@@ -17,6 +17,7 @@ version '1.0-SNAPSHOT'
 
 allprojects {
 
+    ext.droolsVersion = '7.1.0.Final'
     ext.lombokVersion = '1.16.18'
     ext.junitVersion = '4.12'
 

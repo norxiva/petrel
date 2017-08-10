@@ -1,0 +1,21 @@
+
+package my.norxiva.petrel
+
+import my.norxiva.petrel.endpoint.bean.CreateOrderRequest
+
+rule "Choose channel type for netease"
+    when
+        request: CreateOrderRequest(amount > 100)
+    then
+        request.setChannelType("NETEASEPAY");
+end
+
+rule "Choose channel type for wechatpay"
+    when
+        request: CreateOrderRequest(amount < 100 && amount > 0)
+    then
+        request.setChannelType("WECHATPAY");
+end
+
+
+
