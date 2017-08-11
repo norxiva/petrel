@@ -6,6 +6,7 @@ import my.norxiva.petrel.order.query.PaymentOrder;
 import my.norxiva.petrel.order.query.PaymentOrderRepository;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.rule.FactHandle;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -51,8 +52,10 @@ public class PaymentEndpoint {
 
         KieSession kieSession = kieContainer.newKieSession("payment-session");
 
-        kieSession.insert(createOrderRequest);
+        FactHandle factHandle = kieSession.insert(createOrderRequest);
         kieSession.fireAllRules();
+        kieSession.delete(factHandle); // release fact
+        kieSession.dispose(); // release kieSession
 
         log.info(createOrderRequest.getChannelType());
 
