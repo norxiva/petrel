@@ -7,6 +7,8 @@ dependencies {
     compile 'mysql:mysql-connector-java'
     compile 'com.zaxxer:HikariCP'
 
+    compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8'
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-guava'
@@ -16,5 +18,11 @@ dependencies {
 
     compile "org.drools:drools-compiler:${droolsVersion}"
     compile "org.jbpm:jbpm-bpmn2:${droolsVersion}"
+
+    compile "org.bouncycastle:bcpkix-jdk15on:${bouncycastleVersion}"
+
+    compile "org.dbunit:dbunit:${dbunitVersion}"
+    testCompile "com.github.springtestdbunit:spring-test-dbunit:${springTestDbunitVersion}"
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
 
 }

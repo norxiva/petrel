@@ -12,10 +12,13 @@ spring:
   jpa:
     generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
         formate_sql: true
+  data:
+    mongodb:
+      uri: mongodb://192.168.100.221:27017/petrel
 server:
-  port: 9090
+  port: ${config.port:9090}

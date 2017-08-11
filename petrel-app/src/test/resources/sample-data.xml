@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+    <merchant id="1"
+              version="0"
+              no="5db0bcaccc7f4dec8dc5d88a88661b9f"
+              telephone="13501608888"
+              email="135@qq.com"
+              address="shanghai"
+              status="ACTIVE"
+    />
+
+</dataset>
