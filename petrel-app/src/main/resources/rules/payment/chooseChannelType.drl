@@ -1,5 +1,5 @@
 
-package my.norxiva.petrel
+package rules.payment
 
 import my.norxiva.petrel.endpoint.bean.CreateOrderRequest
 

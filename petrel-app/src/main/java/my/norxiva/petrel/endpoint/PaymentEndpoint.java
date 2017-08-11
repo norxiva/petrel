@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import my.norxiva.petrel.endpoint.bean.CreateOrderRequest;
 import my.norxiva.petrel.order.query.PaymentOrder;
 import my.norxiva.petrel.order.query.PaymentOrderRepository;
+import org.kie.api.runtime.KieContainer;
+import org.kie.api.runtime.KieSession;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -25,8 +27,12 @@ public class PaymentEndpoint {
 
     private PaymentOrderRepository paymentOrderRepository;
 
-    public PaymentEndpoint(PaymentOrderRepository paymentOrderRepository) {
+    private KieContainer kieContainer;
+
+    public PaymentEndpoint(PaymentOrderRepository paymentOrderRepository,
+                           KieContainer kieContainer) {
         this.paymentOrderRepository = paymentOrderRepository;
+        this.kieContainer = kieContainer;
     }
 
     @POST
@@ -42,6 +48,16 @@ public class PaymentEndpoint {
         paymentOrder.setCreateTime(LocalDateTime.now());
         paymentOrder.setUpdateTime(LocalDateTime.now());
         paymentOrder.setStatus("CREATED");
+
+        KieSession kieSession = kieContainer.newKieSession("payment-session");
+
+        kieSession.insert(createOrderRequest);
+        kieSession.fireAllRules();
+
+        log.info(createOrderRequest.getChannelType());
+
+        paymentOrder.setChannelType(createOrderRequest.getChannelType());
+
         paymentOrder = paymentOrderRepository.save(paymentOrder);
 
         log.info("create payment order id[{}]", paymentOrder.getId());

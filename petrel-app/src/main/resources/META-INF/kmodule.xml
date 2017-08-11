@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <kmodule xmlns="http://www.drools.org/xsd/kmodule">
-    <kbase name="petrel" packages="my.norxiva.petrel.rule">
+    <kbase name="payment-base" packages="rules.payment">
         <ksession name="payment-session"/>
     </kbase>
-
 </kmodule>

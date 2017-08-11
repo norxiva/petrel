@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class DroolsConfig {
+public class KieConfig {
 
     @Bean
     @ConditionalOnMissingBean(KieServices.class)
