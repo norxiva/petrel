@@ -11,13 +11,17 @@ public class KieConfig {
 
     @Bean
     @ConditionalOnMissingBean(KieServices.class)
-    public KieServices kieServices(){
+    public KieServices kieServices() {
         return KieServices.Factory.get();
     }
 
     @Bean
     @ConditionalOnMissingBean(KieContainer.class)
-    public KieContainer kieContainer(KieServices kieServices){
-        return kieServices.getKieClasspathContainer();
+    public KieContainer kieContainer(KieServices kieServices) {
+        KieContainer kieContainer = kieServices.getKieClasspathContainer();
+        // preload kieBase
+        kieContainer.getKieBase("payment-base");
+        return kieContainer;
     }
+
 }
